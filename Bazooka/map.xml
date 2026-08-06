@@ -1,0 +1,183 @@
+<map proto="1.5.1">
+<name>Bazooka</name>
+<version>1.0.0</version>
+<objective>Throw explosives at the enemy and destroy their monument to win!</objective>
+<created>2026-05-30</created>
+<include id="gapple-kill-reward"/>
+<authors>
+    <author uuid="4d6ecfd1-2e0e-49b6-83c6-e230efe448d4"/> <!-- 3lii3 -->
+</authors>
+<variables>
+    <timelimit id="timelimit"/>
+</variables>
+<teams>
+    <team id="magenta" color="light purple" max="4" show-name-tags="allies">Magenta</team>
+    <team id="aqua" color="dark aqua" max="4" show-name-tags="allies">Aqua</team>
+</teams>
+<kits>
+    <kit id="spawn-kit">
+        <clear/>
+        <item slot="0" material="bow" unbreakable="true"/>
+        <item slot="1" material="iron pickaxe" unbreakable="true"/>
+        <item slot="2" material="bricks" amount="32"/>
+        <item slot="3" material="egg" amount="4" grenade="true" grenade-power="2" grenade-destroy="true" name="`eEgg Bomb" prevent-sharing="true"/>
+        <item slot="28" material="arrow" amount="32"/>
+        <item slot="8" material="golden apple"/>
+        <effect duration="3s" amplifier="255">damage resistance</effect>
+    </kit>
+    <kit id="wither-bomb-kit">
+        <item material="wither skeleton skull" name="`bWither Bomb" lore="`fClick to launch" amount="1" projectile="wither-bomb"/>
+    </kit>
+    <kit id="throwable-tnt-kit">
+        <item material="tnt" name="`cThrowable TNT" lore="`fClick to launch" amount="1" projectile="wither-bomb"/>
+    </kit>
+</kits>
+<spawns>
+    <default yaw="-180">
+        <region>
+            <point>0.5,25,0.5</point>
+        </region>
+    </default>
+    <spawn team="magenta" kit="spawn-kit" yaw="0">
+        <region>
+            <point>0.5,4,-17.5</point>
+        </region>
+    </spawn>
+    <spawn team="aqua" kit="spawn-kit" yaw="-180">
+        <region>
+            <point>0.5,4,18.5</point>
+        </region>
+    </spawn>
+</spawns>
+<broadcasts>
+    <alert after="3m">Every alive player has received `bx1 Wither Bomb</alert>
+</broadcasts>
+<filters>
+    <any id="destructable-blocks">
+        <material>bricks</material>
+        <material>emerald block</material>
+        <material>stone bricks</material>
+    </any>
+</filters>
+<regions>
+    <union id="spawns">
+        <rectangle id="magenta-spawn" min="-10,-15" max="11,-32" />
+        <rectangle id="aqua-spawn" min="-10,16" max="11,33" />
+    </union>
+
+    <union id="spawn-protection">
+        <rectangle min="2,17" max="-1,20"/>
+        <rectangle min="2,-19" max="-1,-16"/>
+    </union>
+
+    <union id="spawners"> 
+        <cuboid id="magenta-egg-spawner" min="7,3,-16" max="10,6,-19"/>
+        <cuboid id="aqua-egg-spawner" min="-6,3,17" max="-9,6,20"/>
+        <cuboid id="magenta-bricks-spawner" min="-6,3,-16" max="-9,6,-19"/>
+        <cuboid id="aqua-bricks-spawner" min="7,3,17" max="10,6,20"/>
+        <block id="magenta-egg-spawner-center">8,4,-18</block>
+        <block id="aqua-egg-spawner-center">-8,4,18</block>
+        <block id="magenta-bricks-spawner-center">-8,4,-18</block>
+        <block id="aqua-bricks-spawner-center">8,4,18</block>
+    </union>
+
+    <cuboid id="aq-tl" min="-5,14,32" max="-8,18,29"/>
+    <cuboid id="aq-tr" min="6,14,32" max="9,18,29"/>
+    <cuboid id="aq-bl" min="-5,8,26" max="-8,12,23"/>
+    <cuboid id="aq-br" min="6,8,26" max="9,12,23"/>
+
+    <cuboid id="mg-tl" min="-5,14,-31" max="-8,18,-28"/>
+    <cuboid id="mg-tr" min="6,14,-31" max="9,18,-28"/>
+    <cuboid id="mg-bl" min="-5,8,-25" max="-8,12,-22"/>
+    <cuboid id="mg-br" min="6,8,-25" max="9,12,-22"/>
+
+    <apply block-break="destructable-blocks" region="spawns" message="You can only break bricks!"/>
+    <apply block="never" region="spawn-protection" message="You cannot obstruct spawn!"/>
+    <apply block="never" region="spawners" message="You cannot obstruct spawners!"/>
+    <apply enter="magenta" region="magenta-spawn" message="You may not enter the enemy team's spawn!"/>
+    <apply enter="aqua" region="aqua-spawn" message="You may not enter the enemy team's spawn!"/>
+    <apply block="deny(void)" message="You may not modify the void area!"/>
+</regions>
+<spawners>
+    <spawner spawn-region="magenta-egg-spawner-center" player-region="magenta-spawn" delay="4s" filter="always">
+        <item material="egg" amount="1" grenade="true" grenade-power="2" grenade-destroy="true" name="`eEgg Bomb"/>
+    </spawner>
+    <spawner spawn-region="aqua-egg-spawner-center" player-region="aqua-spawn" delay="4s" filter="always">
+        <item material="egg" amount="1" grenade="true" grenade-power="2" grenade-destroy="true" name="`eEgg Bomb"/>
+    </spawner>
+    <spawner spawn-region="magenta-bricks-spawner-center" player-region="magenta-spawn" delay="4s" filter="always">
+        <item amount="8" material="bricks"/>
+    </spawner>
+    <spawner spawn-region="aqua-bricks-spawner-center" player-region="aqua-spawn" delay="4s" filter="always">
+        <item amount="8" material="bricks"/>
+    </spawner>
+</spawners>
+<actions>
+    <set var="timelimit" value="600" scope="match"/>
+    <action id="give-wither-bomb" scope="player">
+        <kit id="wither-bomb-kit"/>
+    </action>
+</actions>
+<projectiles>
+    <projectile
+        id="wither-bomb"
+        name="`bWither Bomb"
+        throwable="true"
+        projectile="WitherSkull"
+        damage="15"
+        cooldown="5s"
+        precise="true"
+        power="1"/>
+    <projectile
+        id="throwable-tnt"
+        name="`cThrowable TNT"
+        throwable="true"
+        projectile="TNTPrimed"
+        damage="30"
+        cooldown="8s"
+        power="1"/>
+</projectiles>
+<destroyables materials="emerald block" required="true" mode-changes="false" show-progress="true">
+    <!-- magenta monuments -->
+    <destroyables owner="magenta">
+        <destroyable name="Top Left" region="mg-tl"/>
+        <destroyable name="Top Right" region="mg-tr"/>
+        <destroyable name="Bottom Left" region="mg-bl"/>
+        <destroyable name="Bottom Right" region="mg-br"/>
+    </destroyables>
+
+    <!-- aqua monuments -->
+    <destroyables owner="aqua">
+        <destroyable name="Top Left" region="aq-tl"/>
+        <destroyable name="Top Right" region="aq-tr"/>
+        <destroyable name="Bottom Left" region="aq-bl"/>
+        <destroyable name="Bottom Right" region="aq-br"/>
+    </destroyables>
+</destroyables>
+<toolrepair>
+    <tool>bow</tool>
+    <tool>iron pickaxe</tool>
+</toolrepair>
+<itemkeep>
+    <item>arrow</item>
+    <item>golden apple</item>
+</itemkeep>
+<kill-rewards>
+    <kill-reward>
+        <item amount="1" material="egg" grenade="true" grenade-power="4" name="`eEgg Bomb"/>
+        <item amount="8" material="arrow"/>
+        <item amount="8" material="bricks"/>
+    </kill-reward>
+</kill-rewards>
+<maxbuildheight>20</maxbuildheight>
+<damage>
+    <deny>
+        <any>
+            <cause>fall</cause>
+        </any>
+    </deny>
+</damage>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+</map>

@@ -1,0 +1,160 @@
+<map proto="1.5.1">
+<version>1.0.0</version>
+<name>Fortress Conflict Mini</name>
+<objective>Capture each of the enemy's flags to win!</objective>
+<created>2026-06-02</created>
+<gamemode>ctf</gamemode>
+<authors>
+    <author uuid="4d6ecfd1-2e0e-49b6-83c6-e230efe448d4"/> <!-- 3lii3 -->
+</authors>
+<include id="gapple-kill-reward"/>
+<maxbuildheight>20</maxbuildheight>
+<time result="objectives" show="false">10m</time>
+<teams>
+    <team id="cyan-team" plural="true" color="DARK AQUA" max="5">Creepoids</team>
+    <team id="orange-team" plural="true" color="GOLD" max="5">Skeletals</team>
+</teams>
+<kits>
+    <kit id="default-kit">
+        <item slot="0" material="stone sword" unbreakable="true"/>
+        <item slot="1" material="bow" unbreakable="true"/>
+        <item slot="2" material="wool" team-color="true" amount="64"/>
+        <item slot="7" material="shears" unbreakable="true">
+            <enchantment level="2">efficiency</enchantment>
+        </item>
+        <item slot="8" material="golden apple" amount="1"/>
+        <item slot="29" material="arrow" amount="24"/>
+        <helmet team-color="true" material="leather helmet"/>
+        <chestplate team-color="true" material="leather chestplate"/>
+        <leggings material="iron leggings"/>
+        <boots team-color="true" material="leather boots"/>
+        <effect duration="2" amplifier="5">resistance</effect>
+    </kit>
+    <kit id="carrier-kit">
+        <effect>speed</effect>
+        <effect duration="10" amplifier="1">absorption</effect>
+    </kit>
+</kits>
+<spawns>
+    <default yaw="180" region="default-spawn-point"/>
+    <spawn team="cyan-team" kit="default-kit" yaw="90" region="cyan-spawn-point"/>
+    <spawn team="orange-team" kit="default-kit" yaw="-90" region="orange-spawn-point"/>
+</spawns>
+<filters>
+    <any id="only-player-blocks">
+        <material>orange wool</material>
+        <material>cyan wool</material>
+    </any>
+    <time id="60-sec-elapsed">9m</time>
+    <time id="30-sec-elapsed">9m30s</time>
+    <time id="15-sec-elapsed">9m45s</time>
+    <time id="5-sec-elapsed">9m55s</time>
+    <time id="4-sec-elapsed">9m56s</time>
+    <time id="3-sec-elapsed">9m57s</time>
+    <time id="2-sec-elapsed">9m58s</time>
+    <time id="1-sec-elapsed">9m59s</time>
+</filters>
+<actions>
+    <action scope="match" id="60-sec">
+        <message text="`a60 `bseconds till the game ends!"/>
+        <sound preset="ALERT"/>
+    </action>
+    <action scope="match" id="30-sec">
+        <message text="`a30 `bseconds till the game ends!"/>
+        <sound preset="ALERT"/>
+    </action>
+    <action scope="match" id="15-sec">
+        <message text="`a15 `bseconds till the game ends!"/>
+        <sound preset="ALERT"/>
+    </action>
+    <action scope="match" id="5-sec">
+        <message text="`a5 `bseconds till the game ends!"/>
+        <sound preset="ALERT"/>
+    </action>
+    <action scope="match" id="4-sec">
+        <message text="`a4 `bseconds till the game ends!"/>
+        <sound preset="ALERT"/>
+    </action>
+    <action scope="match" id="3-sec">
+        <message text="`a3 `bseconds till the game ends!"/>
+        <sound preset="ALERT"/>
+    </action>
+    <action scope="match" id="2-sec">
+        <message text="`a2 `bseconds till the game ends!"/>
+        <sound preset="ALERT"/>
+    </action>
+    <action scope="match" id="1-sec">
+        <message text="`a1 `bsecond till the game ends!"/>
+        <sound preset="ALERT"/>
+    </action>
+    <trigger filter="60-sec-elapsed" action="60-sec" scope="match"/>
+    <trigger filter="30-sec-elapsed" action="30-sec" scope="match"/>
+    <trigger filter="15-sec-elapsed" action="15-sec" scope="match"/>
+    <trigger filter="5-sec-elapsed" action="5-sec" scope="match"/>
+    <trigger filter="4-sec-elapsed" action="4-sec" scope="match"/>
+    <trigger filter="3-sec-elapsed" action="3-sec" scope="match"/>
+    <trigger filter="2-sec-elapsed" action="2-sec" scope="match"/>
+    <trigger filter="1-sec-elapsed" action="1-sec" scope="match"/>
+</actions>
+<regions>
+    <point id="default-spawn-point">0.5,30,0.5</point>
+    <point id="orange-spawn-point">-39.5,10,0.5</point>
+    <point id="cyan-spawn-point">40.5,10,0.5</point>
+    <cuboid id="orange-net" min="-37,10,-2" max="-42,15,3"/>
+    <cuboid id="cyan-net" min="38,10,-2" max="43,15,3"/>
+    <union id="spawns-region">
+        <cuboid id="orange-spawn" min="-27,7,5" max="-44,20,-4"/>
+        <cuboid id="cyan-spawn" min="28,7,5" max="45,20,-4"/>
+    </union>
+    <negative id="outside-gameplay-area">
+        <rectangle id="gameplay-area" min="-47,-17" max="48,18"/>
+    </negative>
+    <union id="flags-region">
+        <cuboid min="34,2,7" max="39,7,12"/>
+        <cuboid min="-33,2,-6" max="-38,7,-11"/>
+    </union>
+    <apply block="never" region="flags-region" message="You may not build here"/>
+    <apply block="never" region="spawns-region" message="You may not build here"/>
+    <apply block="never" message="You have may not build outside the map!" region="outside-gameplay-area" />
+    <apply block="only-player-blocks" message="You can only break player-placed blocks!"/>
+</regions>
+<score>
+    <limit>3</limit>
+</score>
+<flags>
+    <flag id="alpha-flag" name="Alpha Flag" color="ORANGE" owner="orange-team" pickup-filter="cyan-team" carry-kit="carrier-kit">
+        <post recover-time="8s" respawn-time="8s">-36,3,-9</post>
+    </flag>
+    <flag id="delta-flag" name="Delta Flag" owner="cyan-team" color="LIGHT_BLUE" pickup-filter="orange-team" carry-kit="carrier-kit">
+        <post recover-time="8s" respawn-time="8s">36,3,9</post>
+    </flag>
+    <net points="1" owner="cyan-team" region="cyan-net" flags="alpha-flag" capture-filter="cyan-team"/>
+    <net points="1" owner="orange-team" region="orange-net" flags="delta-flag" capture-filter="orange-team"/>
+</flags>
+<itemremove>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>iron leggings</item>
+    <item>leather boots</item>
+    <item>golden apple</item>
+    <item>wool</item>
+</itemremove>
+<kill-rewards>
+    <kill-reward>
+        <item material="wool" team-color="true" amount="8"/>
+        <item material="arrow" amount="8"/>
+    </kill-reward>
+</kill-rewards>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+    <tool>shears</tool>
+</toolrepair>
+<gamerules>
+    <randomTickSpeed>0</randomTickSpeed>
+</gamerules>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+<respawn delay="3s"/>
+</map>

@@ -1,0 +1,218 @@
+<map proto="1.5.1">
+<version>1.0.0</version>
+<name>Lost In Time</name>
+<objective>Destroy your opponent's monuments to win!</objective>
+<created>2026-06-30</created>
+<gamemode>dtm</gamemode>
+<authors>
+    <author uuid="4d6ecfd1-2e0e-49b6-83c6-e230efe448d4"/> <!-- 3lii3 -->
+    <author uuid="465df4fe-d24f-40d9-9ad3-276ffd519c44" contribution="Center island"/> <!-- Carisma -->
+</authors>
+<include id="gapple-kill-reward"/>
+<maxbuildheight>50</maxbuildheight>
+<teams>
+    <team id="magenta" plural="true" color="LIGHT PURPLE" dye-color="magenta" max="24">Kepler-452b</team>
+    <team id="yellow" plural="true" color="YELLOW" max="24">Kepler-186f</team>
+</teams>
+<broadcasts>
+    <tip after="5s" every="5m">`r`fEach team got planet rings that applies `e`lSpeed III`r`f!</tip>
+    <tip after="30s" every="5m">`r`fUse the top platform at spawn to teleport to the frontlines!`f</tip>
+    <tip after="1m" every="5m">`r`fIron pickaxes are not craftable!`f</tip>
+</broadcasts>
+<kits>
+    <kit id="default-kit">
+        <item slot="0" material="gold sword" unbreakable="true" name="`e`lLight Saber">
+            <enchantment level="2">sharpness</enchantment>
+        </item>
+        <item slot="1" material="bow" unbreakable="true">
+            <enchantment>infinity</enchantment>
+        </item>
+        <item slot="2" material="stone pickaxe" unbreakable="true">
+            <enchantment level="2">efficiency</enchantment>
+        </item>
+        <item slot="3" material="stained clay" team-color="true" amount="64"/>
+        <item slot="4" material="stained glass" team-color="true" amount="64"/>
+        <item slot="7" material="water bucket" amount="1"/>
+        <item slot="8" material="golden apple" amount="1"/>
+        <item slot="29" material="arrow" amount="48"/>
+        <helmet team-color="true" material="leather helmet" unbreakable="true"/>
+        <chestplate team-color="true" material="leather chestplate" unbreakable="true">
+            <enchantment>projectile protection</enchantment>
+        </chestplate>
+        <leggings material="chainmail leggings" unbreakable="true"/>
+        <boots material="iron boots" unbreakable="true">
+            <enchantment>feather falling</enchantment>
+        </boots>
+    </kit>
+    <kit id="rings-kit">
+        <effect amplifier="3">speed</effect>
+    </kit>
+</kits>
+<spawns>
+    <default>
+        <region yaw="90">
+            <point id="default-spawn-point">0.5,170,0.5</point>
+        </region>
+    </default>
+    <spawn team="magenta" kit="default-kit">
+        <region yaw="180">
+            <point id="magenta-spawn-point">0.5,30,237.5</point>
+        </region>
+    </spawn>
+    <spawn team="yellow" kit="default-kit">
+        <region yaw="0">
+            <point id="yellow-spawn-point">0.5,30,-236.5</point> 
+        </region>
+    </spawn>
+</spawns>
+<filters>
+    <material id="only-iron">iron block</material>
+    <not id="no-beacons">
+        <material>beacon</material>
+    </not>
+    <cause id="player">player</cause>
+</filters>
+<regions>
+    <union id="team-spawns">
+        <rectangle id="yellow-spawn" min="60,-180" max="-59,-253"/>
+        <rectangle id="magenta-spawn" min="60,181" max="-59,254"/>
+    </union>
+    <union id="renewable-iron">
+        <!-- magenta -->
+        <cuboid min="-25,18,197" max="-13,20,190"/>
+        <cuboid min="26,18,197" max="14,20,190"/>
+        <!-- yellow -->
+        <cuboid min="-25,18,-196" max="-13,20,-189"/>
+        <cuboid min="26,18,-196" max="14,20,-189"/>
+    </union>
+    <negative id="outside-gameplay-area">
+        <rectangle id="gameplay-area" min="137,181" max="-136,-180"/>
+    </negative>
+    <union id="launch-pads">
+        <!-- magenta -->
+        <cuboid min="18,18,-204" max="15,20,-201"/>
+        <cuboid min="-17,18,-204" max="-14,20,-201"/>
+        <!-- yellow -->
+        <cuboid min="18,18,205" max="15,20,202"/>
+        <cuboid min="-17,18,205" max="-14,20,202"/>
+    </union>
+    <union id="no-fall-dmg">
+        <!-- magenta -->
+        <cylinder base="16.5,18,203.5" radius="4" height="12"/>
+        <cylinder base="-15.5,18,203.5" radius="4" height="12"/>
+        <!-- yellow -->
+        <cylinder base="16.5,18,-202.5" radius="4" height="12"/>
+        <cylinder base="-15.5,18,-202.5" radius="4" height="12"/>
+    </union>
+    <union id="speed-rings">
+        <complement>
+            <cylinder base="0.5,11.5,-119.5" radius="58.5" height="3.5"/>
+            <cylinder base="0.5,11.5,-119.5" radius="42.5" height="3.5"/>
+            <cylinder base="0.5,11.5,-69.5" radius="39.5" height="3.5"/>
+        </complement>
+        <complement>
+            <cylinder base="0.5,11.5,120.5" radius="58.5" height="3.5"/>
+            <cylinder base="0.5,11.5,120.5" radius="42.5" height="3.5"/>
+            <cylinder base="0.5,11.5,70.5" radius="39.5" height="3.5"/>
+        </complement>
+    </union>
+    <union id="speed-rings-floor">
+        <complement>
+            <cylinder base="0.5,11,-119.5" radius="58.5" height="1"/>
+            <cylinder base="0.5,11,-119.5" radius="42.5" height="1"/>
+            <cylinder base="0.5,11,-69.5" radius="39.5" height="1"/>
+        </complement>
+        <complement>
+            <cylinder base="0.5,11,120.5" radius="58.5" height="1"/>
+            <cylinder base="0.5,11,120.5" radius="42.5" height="1"/>
+            <cylinder base="0.5,11,70.5" radius="39.5" height="1"/>
+        </complement>
+    </union>
+    <union id="portal-destinations">
+        <!-- magenta -->
+        <cylinder base="0.5,14,90.5" radius="8" height="11"/>
+        <!-- yellow -->
+        <cylinder base="0.5,14,-89.5" radius="8" height="11"/>
+        <point id="yellow-portal-destination">0.5,18,-89.5</point>
+        <point id="magenta-portal-destination">0.5,18,90.5</point>
+    </union>
+    <cuboid id="yellow-portal" min="-5,35,-220" max="-8,40,-217"/>
+    <cuboid id="magenta-portal" min="6,35,221" max="9,40,218"/>
+    <cuboid id="magenta-east-monument-region" min="93,22,118" max="98,27,123"/>
+    <cuboid id="magenta-west-monument-region" min="-92,22,118" max="-97,27,123"/>
+    <cuboid id="yellow-east-monument-region" min="93,22,-117" max="98,27,-122"/>
+    <cuboid id="yellow-west-monument-region" min="-92,22,-117" max="-97,27,-122"/>
+    <apply region="speed-rings" lend-kit="rings-kit"/>
+    <apply region="speed-rings-floor" block-break="never"/>
+    <apply use="no-beacons"/>
+    <apply block="never" region="portal-destinations" message="You may not obstruct portal destinations!"/>
+    <apply velocity="0,1.5,0" filter="always" region="launch-pads"/>
+    <apply block-place="not(player)" block-break="only-iron" region="team-spawns" message="You can only break iron blocks at spawn!"/>
+    <apply enter="yellow" region="yellow-spawn" message="You cannot enter other team's spawn!"/>
+    <apply enter="magenta" region="magenta-spawn" message="You cannot enter other team's spawn!"/>
+    <apply block="not(player)" region="outside-gameplay-area" message="You may not build outside the map!"/>
+</regions>
+<destroyables>
+    <destroyable id="magenta-east-monument" name="Eastern Reactor" required="true" materials="diamond block;sea lantern" owner="magenta" show-progress="true" repairable="false"  region="magenta-east-monument-region"/>
+    <destroyable id="magenta-west-monument" name="Western Reactor" required="true" materials="diamond block;sea lantern" owner="magenta" show-progress="true" repairable="false"  region="magenta-west-monument-region"/>
+    <destroyable id="yellow-east-monument" name="Eastern Reactor" required="true" materials="diamond block;sea lantern" owner="yellow" show-progress="true" repairable="false"  region="yellow-east-monument-region"/>
+    <destroyable id="yellow-west-monument" name="Western Reactor" required="true" materials="diamond block;sea lantern" owner="yellow" show-progress="true" repairable="false"  region="yellow-west-monument-region"/>
+</destroyables>
+<portals>
+    <portal region="yellow-portal" destination="yellow-portal-destination"/>
+    <portal region="magenta-portal" destination="magenta-portal-destination"/>
+</portals>
+<damage>
+    <deny>
+        <all>
+            <cause>fall</cause>
+            <region id="no-fall-dmg"/>
+        </all>
+    </deny>
+</damage>
+<renewables>
+    <renewable region="renewable-iron" rate="1" grow="true" particles="true" avoid-entities="true">
+        <renew-filter>
+            <material>iron block</material>
+        </renew-filter>
+        <replace-filter>
+            <material>air</material>
+        </replace-filter>
+    </renewable>
+</renewables>
+<itemremove>
+    <item>leather helmet</item>
+    <item>iron boots</item>
+    <item>leather chestplate</item>
+    <item>chainmail leggings</item>
+    <item>stained glass </item>
+    <item>stained clay</item>
+    <item>diamond block</item>
+</itemremove>
+<toolrepair>
+    <tool>gold sword</tool>
+    <tool>bow</tool>
+    <tool>stone pickaxe</tool>
+</toolrepair>
+<block-drops>
+    <rule region="everywhere" wrong-tool="true">
+        <filter>
+            <not>
+                <material>iron block</material>
+            </not>
+        </filter>
+        <drops>
+        </drops>
+    </rule>
+</block-drops>
+<crafting>
+    <disable>iron pickaxe</disable>
+</crafting>
+<gamerules>
+    <randomTickSpeed>0</randomTickSpeed>
+</gamerules>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+<respawn delay="3s"/>
+</map>
