@@ -73,7 +73,7 @@
         </union>
     </union>
     <union id="wool-rooms">
-        <rectangle id="red-wool-room" min="35,-51" max="53,-60"/> <!-- Blue capture, Red defend -->
+        <rectangle id="red-wool-room" min="35,-50" max="53,-60"/> <!-- Blue capture, Red defend -->
         <rectangle id="blue-wool-room" min="-34,51" max="-52,61"/> <!-- Red capture, Blue defend -->
     </union>
     <union id="victory-monuments">
