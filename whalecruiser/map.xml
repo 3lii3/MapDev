@@ -155,8 +155,8 @@
         <destroyable id="red-monument" materials="cyan stained clay;iron block;quartz block;light blue stained glass;43:0;sea lantern;clay;smooth andesite" owner="red" region="red-monument-region"/>
     </destroyables>
     <cores>
-        <core name="Engine Core" team="blue" material="obisdian" leak="3" region="blue-core" required="true"/>
-        <core name="Engine Core" team="red" material="obisdian" leak="3" region="red-core" required="true"/>
+        <core name="Engine Core" team="blue" material="obsidian" leak="3" region="blue-core" required="true"/>
+        <core name="Engine Core" team="red" material="obsidian" leak="3" region="red-core" required="true"/>
     </cores>
 </unless>
 <if variant="dte">
