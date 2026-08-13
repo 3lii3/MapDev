@@ -155,8 +155,8 @@
 </unless>
 <if variant="dte">
     <destroyables name="Cruiser" show-progress="true" completion="60%" repairable="false" required="true" >
-        <destroyable id="blue-monument" materials="cyan stained clay;iron block;quartz block;light blue stained glass;sea lantern;clay;stone;chest;cobblestone wall;iron bars;43;44" owner="blue" region="blue-monument-region"/>
-        <destroyable id="red-monument" materials="cyan stained clay;iron block;quartz block;light blue stained glass;sea lantern;clay;stone;chest;cobblestone wall;iron bars;43;44" owner="red" region="red-monument-region"/>
+        <destroyable id="blue-monument" materials="stained clay;iron block;quartz block;light blue stained glass;sea lantern;clay;stone;chest;cobblestone wall;iron bars;43;44" owner="blue" region="blue-monument-region"/>
+        <destroyable id="red-monument" materials="stained clay;iron block;quartz block;light blue stained glass;sea lantern;clay;stone;chest;cobblestone wall;iron bars;43;44" owner="red" region="red-monument-region"/>
     </destroyables>
 </if>
 <itemremove>
