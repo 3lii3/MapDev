@@ -128,7 +128,7 @@
         <sphere id="red-core" center="-19.5,13.5,-52.5" radius="2"/>
         <cuboid id="blue-monument-region" min="10,0,10" max="37,12,35"/>
         <cuboid id="red-monument-region" min="10,0,-9" max="37,12,-34"/>
-        <apply block="never" region="spawn-tubes">
+        <apply block="never" region="spawn-tubes"/>
         <apply block="never" region="outside-gameplay-area" message="You may not build outside the map!"/>
         <negative id="outside-gameplay-area">
             <rectangle min="-34,-74" max="37,75"/>
@@ -143,7 +143,7 @@
     </if>
     <above y="38" id="above-limit"/>
     <apply region="everywhere" block-place="deny-fire"/>
-    <apply block="never" region="above-limit" message="You may not build out of bounds!">
+    <apply block="never" region="above-limit" message="You may not build out of bounds!"/>
 </regions>
 <unless variant="dte">
     <destroyables name="Baby Cruiser" show-progress="true" completion="60%" repairable="false" required="true" >
