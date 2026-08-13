@@ -122,8 +122,8 @@
 <regions>
     <unless variant="dte">
         <union id="spawn-tubes">
-            <circle id="blue-spawn-tube" center="-0.5,53.5" radius="4"/>
-            <circle id="red-spawn-tube" center="-0.5,-52.5" radius="4"/>
+            <circle id="blue-spawn-tube" center="-0.5,53.5" radius="3.5"/>
+            <circle id="red-spawn-tube" center="-0.5,-52.5" radius="3.5"/>
         </union>
         <sphere id="blue-core" origin="-19.5,13.5,53.5" radius="3"/>
         <sphere id="red-core" origin="-19.5,13.5,-52.5" radius="3"/>
@@ -136,8 +136,8 @@
     </unless>
     <if variant="dte">
         <union id="spawn-tubes">
-            <circle id="blue-spawn-tube" center="-0.5,37.5" radius="4"/>
-            <circle id="red-spawn-tube" center="-0.5,-36.5" radius="4"/>
+            <circle id="blue-spawn-tube" center="-0.5,37.5" radius="3.5"/>
+            <circle id="red-spawn-tube" center="-0.5,-36.5" radius="3.5"/>
         </union>
         <cuboid id="blue-cruiser" min="-34,0,16" max="30,36,59"/>
         <cuboid id="red-cruiser" min="-34,0,-15" max="30,36,-58"/>
