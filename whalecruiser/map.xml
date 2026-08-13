@@ -97,8 +97,10 @@
     <unless variant="dte">
         <default>
             <region>
-                <point yaw="0">-0.5,97,-52.5</point>
-                <point yaw="180">-0.5,97,53.5</point>
+                <union>
+                    <point yaw="0">-0.5,97,-52.5</point>
+                    <point yaw="180">-0.5,97,53.5</point>
+                <union>
             </region>
         </default>
         <spawn team="red" kit="default-kit">
