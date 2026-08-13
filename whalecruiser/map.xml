@@ -124,8 +124,8 @@
             <circle id="blue-spawn-tube" center="-0.5,53.5" radius="3"/>
             <circle id="red-spawn-tube" center="-0.5,-52.5" radius="3"/>
         </union>
-        <sphere id="blue-core" center="-20,13,53" radius="2"/>
-        <sphere id="red-core" center="-20,13,-53" radius="2"/>
+        <sphere id="blue-core" origin="-20,13,53" radius="2"/>
+        <sphere id="red-core" origin="-20,13,-53" radius="2"/>
         <cuboid id="blue-monument-region" min="10,0,10" max="37,12,35"/>
         <cuboid id="red-monument-region" min="10,0,-9" max="37,12,-34"/>
         <apply block="never" region="spawn-tubes"/>
