@@ -160,11 +160,6 @@
     </destroyables>
 </if>
 <itemremove>
-    <item>iron sword</item>
-    <item>diamond pickaxe</item>
-    <item>iron axe</item>
-    <item>iron spade</item>
-    <item>bow</item>
     <item>flint and steel</item>
     <item>arrow</item>
     <item>step</item>
@@ -197,9 +192,10 @@
 </itemremove>
 <toolrepair>
     <tool>iron sword</tool>
-    <tool>bow</tool>
     <tool>diamond pickaxe</tool>
+    <tool>iron axe</tool>
     <tool>iron spade</tool>
+    <tool>bow</tool>
 </toolrepair>
 <kill-rewards>
     <kill-reward>
