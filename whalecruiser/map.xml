@@ -23,8 +23,8 @@
 <include id="gapple-kill-reward"/>
 <maxbuildheight>37</maxbuildheight>
 <teams>
-    <team id="blue" color="BLUE" max="8">Blue</team>
-    <team id="red" color="RED" max="8">Red</team>
+    <team id="blue" color="BLUE" max="10">Blue</team>
+    <team id="red" color="RED" max="10">Red</team>
 </teams>
 <world>
     <timeset>18000</timeset>
