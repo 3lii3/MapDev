@@ -129,13 +129,16 @@
         <sphere id="red-core" origin="-19.5,13.5,-52.5" radius="3"/>
         <cuboid id="blue-monument-region" min="10,0,10" max="37,12,35"/>
         <cuboid id="red-monument-region" min="10,0,-9" max="37,12,-34"/>
-        <apply block="never" region="spawn-tubes"/>
         <apply block="never" region="outside-gameplay-area" message="You may not build outside the map!"/>
         <negative id="outside-gameplay-area">
             <rectangle min="-34,-74" max="37,75"/>
         </negative>
     </unless>
     <if variant="dte">
+        <union id="spawn-tubes">
+            <circle id="blue-spawn-tube" center="-0.5,37.5" radius="4"/>
+            <circle id="red-spawn-tube" center="-0.5,-36.5" radius="4"/>
+        </union>
         <cuboid id="blue-cruiser" min="-34,0,16" max="30,36,59"/>
         <cuboid id="red-cruiser" min="-34,0,-15" max="30,36,-58"/>
         <negative id="outside-gameplay-area">
@@ -144,6 +147,7 @@
     </if>
     <above y="38" id="above-limit"/>
     <apply region="everywhere" block-place="deny-fire"/>
+    <apply block="never" region="spawn-tubes"/>
     <apply block="never" region="above-limit" message="You may not build out of bounds!"/>
 </regions>
 <unless variant="dte">
