@@ -1,7 +1,6 @@
 <map proto="1.5.1">
 <version>1.0.0</version>
 <name>Whalecruiser</name>
-<objective>Destroy your opponent's monument and leak their core to win!</objective>
 <created>2026-08-13</created>
 <gamemode>dtm</gamemode>
 <gamemode>dtc</gamemode>
@@ -9,13 +8,17 @@
 <authors>
     <author uuid="4d6ecfd1-2e0e-49b6-83c6-e230efe448d4"/> <!-- 3lii3 -->
 </authors>
-<unless variant="dte">
+<if variant="dte">
+    <objective>Destroy 80% of your enemy's cruiser to win!</objective>
     <contributors>
         <contributor uuid="dad8b95c-cf6a-44df-982e-8c8dd70201e0" contribution="Original DATAcenter map"/> <!-- ElectroidFilms -->
         <contributor uuid="e37f18f1-117b-47db-8806-6d3a0854b518" contribution="Original DATAcenter map"/> <!-- chickolympics -->
         <contributor uuid="459fd919-0d58-401a-9601-6cab1eb721ab" contribution="Original DATAcenter map"/> <!-- Reshif -->
         <contributor uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06" contribution="Original DATAcenter map"/> <!-- thestrangeboy1 -->
     </contributors>
+</if>
+<unless variant="dte">
+<objective>Destroy your opponent's monument and leak their core to win!</objective>
 </unless>
 <include id="gapple-kill-reward"/>
 <maxbuildheight>37</maxbuildheight>
@@ -67,7 +70,7 @@
         <kit id="default-kit" parents="parent-kit">
             <item slot="4" material="quartz block" amount="64"/>
             <item slot="5" material="dark oak planks" amount="32"/>
-            <item slot="6" material="tnt" amount="16"/>
+            <item slot="6" material="tnt" amount="32"/>
             <item slot="7" material="water bucket" amount="1"/>
             <item slot="8" material="golden apple" amount="1"/>
             <item slot="29" material="arrow" amount="48"/>
@@ -79,7 +82,7 @@
     <if variant="dte">
         <default>
             <region yaw="0">
-                <point>-0.5,97,-52.5</point>
+                <point>-0.5,97,-36.5</point>
             </region>
         </default>
         <spawn team="red" kit="default-kit">
@@ -144,19 +147,19 @@
     <apply block="never" region="above-limit" message="You may not build out of bounds!"/>
 </regions>
 <unless variant="dte">
-    <destroyables name="Baby Cruiser" show-progress="true" completion="60%" repairable="false" required="true" >
-        <destroyable id="blue-monument" materials="stained clay;iron block;quartz block;stained glass;43:0;sea lantern;clay;stone" owner="blue" region="blue-monument-region"/>
-        <destroyable id="red-monument" materials="stained clay;iron block;quartz block;stained glass;43:0;sea lantern;clay;stone" owner="red" region="red-monument-region"/>
+    <destroyables name="Baby Cruiser" show-progress="true" completion="80%" repairable="false" required="true" >
+        <destroyable id="blue-monument" materials="stained clay;iron block;quartz block;stained glass;43;44;sea lantern;clay;stone" owner="blue" region="blue-monument-region"/>
+        <destroyable id="red-monument" materials="stained clay;iron block;quartz block;stained glass;43;44;sea lantern;clay;stone" owner="red" region="red-monument-region"/>
     </destroyables>
     <cores>
-        <core name="Engine Core" team="blue" material="obsidian" leak="3" region="blue-core" required="true"/>
-        <core name="Engine Core" team="red" material="obsidian" leak="3" region="red-core" required="true"/>
+        <core name="Engine Core" team="blue" material="obsidian" leak="2" region="blue-core" required="true"/>
+        <core name="Engine Core" team="red" material="obsidian" leak="2" region="red-core" required="true"/>
     </cores>
 </unless>
 <if variant="dte">
-    <destroyables name="Cruiser" show-progress="true" completion="60%" repairable="false" required="true" >
-        <destroyable id="blue-monument" materials="stained clay;iron block;quartz block;light blue stained glass;sea lantern;clay;stone;chest;cobblestone wall;iron bars;43;44" owner="blue" region="blue-cruiser"/>
-        <destroyable id="red-monument" materials="stained clay;iron block;quartz block;light blue stained glass;sea lantern;clay;stone;chest;cobblestone wall;iron bars;43;44" owner="red" region="red-cruiser"/>
+    <destroyables name="Cruiser" show-progress="true" completion="80%" repairable="false" required="true" >
+        <destroyable id="blue-monument" materials="stained clay;iron block;quartz block;light blue stained glass;sea lantern;clay;stone;chest;cobblestone wall;iron bars;43;44;coal block" owner="blue" region="blue-cruiser"/>
+        <destroyable id="red-monument" materials="stained clay;iron block;quartz block;light blue stained glass;sea lantern;clay;stone;chest;cobblestone wall;iron bars;43;44;coal block" owner="red" region="red-cruiser"/>
     </destroyables>
 </if>
 <itemremove>
