@@ -1,0 +1,14 @@
+<map>
+<created>8/15/2026</created>
+<authors>
+    <author>3lii3</author>
+</authors>
+<filters>
+    <deny id="deny-blocks">
+        </blocks>
+    </deny>
+</filters>
+<regions>
+    <apply block-break="deny-blocks" region="blocks"/>
+</regions>
+</map>
