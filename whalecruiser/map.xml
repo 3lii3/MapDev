@@ -230,6 +230,16 @@
         <damage>fall</damage>
     </disabledamage>
 </if>
+<unless variant="dte">
+    <damage>
+        <deny>
+            <all>
+                <region>spawn-tubes</region>
+                <cause>fall</cause>
+            </all>
+        </deny>
+    </damage>
+</unless>
 <hunger>
     <depletion>off</depletion>
 </hunger>
