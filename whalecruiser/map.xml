@@ -234,7 +234,7 @@
     <damage>
         <deny>
             <all>
-                <region>spawn-tubes</region>
+                <region id="spawn-tubes"/>
                 <cause>fall</cause>
             </all>
         </deny>
