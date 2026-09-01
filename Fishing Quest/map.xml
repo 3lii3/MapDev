@@ -102,7 +102,7 @@
         <item amount="8" material="arrow"/>
     </kill-reward>
 </kill-rewards>
-<maxbuildheight>18</maxbuildheight>
+<maxbuildheight>10</maxbuildheight>
 <hunger>
     <depletion>off</depletion>
 </hunger>
