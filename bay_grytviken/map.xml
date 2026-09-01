@@ -1,0 +1,149 @@
+<map proto="1.5.1">
+<version>1.0.0</version>
+<name>Bay Grytviken</name>
+<created>2026-08-19</created>
+<phase>development</phase>
+<gamemode>dtm</gamemode>
+<authors>
+    <author uuid="4d6ecfd1-2e0e-49b6-83c6-e230efe448d4"/> <!-- 3lii3 -->
+</authors>
+<objective>Destroy both of your opponent's monuments to win!</objective>
+<include id="gapple-kill-reward"/>
+<maxbuildheight>38</maxbuildheight>
+<teams>
+    <team id="blue" color="BLUE" max="20">Blue</team>
+    <team id="red" color="RED" max="20">Red</team>
+</teams>
+<broadcasts>
+    <tip after="30s" every="7m30s">You can get diamond leggings by breaking diamond blocks at the center's resource boat</tip>
+</broadcasts>
+<world>
+    <timeset>23300</timeset>
+</world>
+<kits>
+    <kit id="default-kit">
+        <item slot="0" material="iron sword" unbreakable="true"/>
+        <item slot="1" material="bow" unbreakable="true"/>
+        <item slot="2" material="diamond pickaxe" unbreakable="true"/>
+        <item slot="3" material="iron axe" unbreakable="true"/>
+        <item slot="4" material="birch planks" amount="64"/>
+        <item slot="5" material="glass" amount="32"/>
+        <item slot="7" material="bucket" amount="1"/>
+        <item slot="8" material="golden apple" amount="1"/>
+        <item slot="29" material="arrow" amount="32"/>
+        <item slot="31" material="iron spade" unbreakable="true"/>
+        <item slot="32" material="birch planks" amount="64"/>
+        <helmet team-color="true" material="leather helmet" unbreakable="true"/>
+        <chestplate team-color="true" material="leather chestplate" unbreakable="true"/>
+        <leggings material="chainmail leggings" unbreakable="true" enchantment="projectile protection"/>
+        <boots team-color="true" material="leather boots" unbreakable="true"/>
+    </kit>
+</kits>
+<spawns>
+    <default>
+        <region yaw="90">
+            <point>100.5,20,0.5</point>
+        </region>
+    </default>
+    <spawn team="red" kit="default-kit">
+        <region yaw="180">
+            <point>27.5,14,191.5</point>
+        </region>
+    </spawn>
+    <spawn team="blue" kit="default-kit">
+        <region yaw="0">
+            <point>27.5,14,-190.5</point>
+        </region>
+    </spawn>
+</spawns>
+<filters>
+    <material id="only-iron">iron block</material>
+    <deny id="by-player">
+        <cause>player</cause>
+    </deny>
+</filters>
+<regions>
+    <union id="team-spawns">
+        <union id="blue-spawn">
+        </union>
+    </union>
+    <negative id="outside-build-area">
+        <complement id="build-area">
+            <rectangle min="101,-200" max="-150,201"/>
+            <circle center="100.5,0.5" radius="75.5">
+        </complement>
+    </negative>
+    <union id="iron-region">
+        <rectangle min="-5,-174" max="-24,-193"/>
+        <rectangle min="-5,175" max="-24,194"/>
+    </union>
+    <cuboid id="blue-east-region" min="41,5,-135" max="40,8,-134"/>
+    <cuboid id="blue-west-region" min="-54,17,-135" max="-55,20,-134"/>
+    <cuboid id="red-east-region" min="41,5,136" max="40,8,135"/>
+    <cuboid id="red-west-region" min="-54,17,136" max="-55,20,135"/>
+    <apply region="iron-region" block-place="deny(by-player)" block-break="only-iron" message="You can only break iron blocks here"/>
+    <apply region="team-spawns" block="never" message="You may not edit spawns!"/>
+    <apply region="everywhere" block-place="deny-fire"/>
+    <apply block="deny(void)" region="outside-build-area" message="You may not edit the void!"/>
+</regions>
+<destroyables show-progress="true" repairable="false" required="true" >
+    <destroyable id="blue-east" name="East Monument" materials="obsidian" owner="blue" region="blue-east-region"/>
+    <destroyable id="blue-west" name="West Monument" materials="obsidian" owner="blue" region="blue-west-region"/>
+    <destroyable id="red-east" name="East Monument" materials="obsidian" owner="red" region="red-east-region"/>
+    <destroyable id="red-west" name="West Monument" materials="obsidian" owner="red" region="red-west-region"/>
+</destroyables>
+<itemremove>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>chainmail leggings</item>
+    <item>leather boots</item>
+    <item>obsidian</item>
+    <item>bucket</item>
+    <item>glass</item>
+    <item>wood</item>
+    <item>tnt</item>
+</itemremove>
+<toolrepair>
+    <tool>iron sword</tool>
+    <tool>diamond pickaxe</tool>
+    <tool>iron axe</tool>
+    <tool>iron spade</tool>
+    <tool>bow</tool>
+</toolrepair>
+<item-mods>
+    <rule>
+        <match>
+            <material>iron helmet</material>
+            <material>iron chestplate</material>
+            <material>iron leggings</material>
+            <material>iron boots</material>
+        </match>
+        <modify unbreakable="true"/>
+    </rule>
+</item-mods>
+<kill-rewards>
+    <kill-reward>
+        <item amount="16" material="birch wood"/>
+        <item amount="8" material="arrow"/>
+    </kill-reward>
+</kill-rewards>
+<block-drops>
+    <rule>
+        <filter>
+            <material>diamond block</material>
+        </filter>
+        <drops>
+            <item material="diamond leggings"/>
+        </drops>
+    </rule>
+</block-drops>
+<gamerules>
+    <randomTickSpeed>0</randomTickSpeed>
+    <doFireTick>false</doFireTick>
+    <doTileDrops>false</doTileDrops>
+</gamerules>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+<respawn delay="3s"/>
+</map>
