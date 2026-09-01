@@ -66,6 +66,12 @@
 <regions>
     <union id="team-spawns">
         <union id="blue-spawn">
+            <rectangle min="42,-200" max="14,-174"/>
+            <rectangle min="48,-181" max="41,-193"/>
+        </union>
+        <union id="red-spawn">
+            <rectangle min="42,201" max="14,175"/>
+            <rectangle min="48,182" max="41,194"/>
         </union>
     </union>
     <negative id="outside-build-area">
@@ -86,6 +92,8 @@
     <apply region="iron-region" block-place="deny(by-player)" block-break="only-iron" message="You can only break iron blocks here"/>
     <apply region="diamond-region" block-place="deny(by-player)" block-break="only-diamond" message="You can only break diamond blocks here"/>
     <apply region="team-spawns" block="never" message="You may not edit spawns!"/>
+    <apply region="blue-spawn" enter="blue" message="You cannot enter other team's spawn!">
+    <apply region="red-spawn" enter="red" message="You cannot enter other team's spawn!">
     <apply block="deny(void)" region="outside-build-area" message="You may not edit the void!"/>
 </regions>
 <renewables>
