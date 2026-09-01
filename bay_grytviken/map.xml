@@ -58,6 +58,7 @@
 </spawns>
 <filters>
     <material id="only-iron">iron block</material>
+    <material id="only-diamond">diamond block</material>
     <deny id="by-player">
         <cause>player</cause>
     </deny>
@@ -77,11 +78,13 @@
         <rectangle min="-5,-174" max="-24,-193"/>
         <rectangle min="-5,175" max="-24,194"/>
     </union>
+    <rectangle id="diamond-region" min="23,4" max="10,-3"/>
     <cuboid id="blue-east-region" min="41,5,-135" max="40,8,-134"/>
     <cuboid id="blue-west-region" min="-54,17,-135" max="-55,20,-134"/>
     <cuboid id="red-east-region" min="41,5,136" max="40,8,135"/>
     <cuboid id="red-west-region" min="-54,17,136" max="-55,20,135"/>
     <apply region="iron-region" block-place="deny(by-player)" block-break="only-iron" message="You can only break iron blocks here"/>
+    <apply region="diamond-region" block-place="deny(by-player)" block-break="only-diamond" message="You can only break diamond blocks here"/>
     <apply region="team-spawns" block="never" message="You may not edit spawns!"/>
     <apply block="deny(void)" region="outside-build-area" message="You may not edit the void!"/>
 </regions>
