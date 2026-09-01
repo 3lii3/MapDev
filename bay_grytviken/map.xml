@@ -83,7 +83,6 @@
     <cuboid id="red-west-region" min="-54,17,136" max="-55,20,135"/>
     <apply region="iron-region" block-place="deny(by-player)" block-break="only-iron" message="You can only break iron blocks here"/>
     <apply region="team-spawns" block="never" message="You may not edit spawns!"/>
-    <apply region="everywhere" block-place="deny-fire"/>
     <apply block="deny(void)" region="outside-build-area" message="You may not edit the void!"/>
 </regions>
 <destroyables show-progress="true" repairable="false" required="true" >
