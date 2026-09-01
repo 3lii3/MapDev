@@ -70,7 +70,7 @@
     <negative id="outside-build-area">
         <complement id="build-area">
             <rectangle min="101,-200" max="-150,201"/>
-            <circle center="100.5,0.5" radius="75.5">
+            <circle center="100.5,0.5" radius="75.5"/>
         </complement>
     </negative>
     <union id="iron-region">
