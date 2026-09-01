@@ -85,6 +85,13 @@
     <apply region="team-spawns" block="never" message="You may not edit spawns!"/>
     <apply block="deny(void)" region="outside-build-area" message="You may not edit the void!"/>
 </regions>
+<renewables>
+    <renewable region="iron-region" rate="1" grow="true" particles="true" avoid-entities="true">
+        <renew-filter>
+            <material>iron block</material>
+        </renew-filter>
+    </renewable>
+</renewables>
 <destroyables show-progress="true" repairable="false" required="true" >
     <destroyable id="blue-east" name="East Monument" materials="obsidian" owner="blue" region="blue-east-region"/>
     <destroyable id="blue-west" name="West Monument" materials="obsidian" owner="blue" region="blue-west-region"/>
