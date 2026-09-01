@@ -61,8 +61,8 @@
     </negative>
     <cuboid id="red-core" min="-27,7,3" max="-30,10,6"/>
     <cuboid id="blue-core" min="28,7,3" max="31,10,6"/>
-    <apply enter="only-red" region="red-spawn" message="You may not enter the enemy team's spawn!"/>
-    <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy team's spawn!"/>
+    <apply enter="red" region="red-spawn" message="You may not enter the enemy team's spawn!"/>
+    <apply enter="blue" region="blue-spawn" message="You may not enter the enemy team's spawn!"/>
     <apply block="never" region="spawns" message="You may not modify the spawn area!"/>
     <apply block="never" region="void-area" message="You may not modify the void area!"/>
 </regions>
