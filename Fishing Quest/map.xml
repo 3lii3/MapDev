@@ -40,12 +40,12 @@
             <point>0.5,12,-7.5</point>
         </region>
     </default>
-    <spawn team="red-team" kit="spawn-kit">
+    <spawn team="red" kit="spawn-kit">
         <region yaw="-90">
             <point>-27.5,3,-13.5</point>
         </region>
     </spawn>
-    <spawn team="blue-team" kit="spawn-kit">
+    <spawn team="blue" kit="spawn-kit">
         <region yaw="90">
             <point>28.5,3,-13.5</point>
         </region>
