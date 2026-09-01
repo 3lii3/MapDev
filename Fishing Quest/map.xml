@@ -12,8 +12,8 @@
     <contributor uuid="63ddf58a-ba2c-4d39-8481-6358bb46c63a" contribution="XML"/> <!-- samschaap -->
 </contributors>
 <teams>
-    <team id="red-team" color="dark red" max="6">Red</team>
-    <team id="blue-team" color="blue" max="6">Blue</team>
+    <team id="red" color="dark red" max="6">Red</team>
+    <team id="blue" color="blue" max="6">Blue</team>
 </teams>
 <kits>
     <kit id="spawn-kit">
