@@ -7,6 +7,14 @@
 <authors>
     <author uuid="4d6ecfd1-2e0e-49b6-83c6-e230efe448d4"/> <!-- 3lii3 -->
 </authors>
+<constants>
+    <constant id="eff.modes-preset">every-5m</constant>
+    <constant id="eff.efficiency-tool">diamond pickaxe</constant>
+    <constant id="eff.team-1">blue</constant>
+    <constant id="eff.team-2">red</constant>
+    <constant id="eff.t1-m1-region">red-monument</constant>
+    <constant id="eff.t2-m1-region">blue-monument</constant>
+</constants>
 <objective>Destroy both of your opponent's monuments to win!</objective>
 <include id="gapple-kill-reward"/>
 <maxbuildheight>38</maxbuildheight>
@@ -59,9 +67,7 @@
 <filters>
     <material id="only-iron">iron block</material>
     <material id="only-diamond">diamond block</material>
-    <deny id="by-player">
-        <cause>player</cause>
-    </deny>
+    <cause id="by-player">player</cause>
 </filters>
 <regions>
     <union id="team-spawns">
@@ -153,11 +159,18 @@
             <item material="diamond leggings"/>
         </drops>
     </rule>
+    <rule>
+        <filter>
+            <material>iron block</material>
+        </filter>
+        <drops>
+            <item material="iron block"/>
+        </drops>
+    </rule>
 </block-drops>
 <gamerules>
     <randomTickSpeed>0</randomTickSpeed>
     <doFireTick>false</doFireTick>
-    <doTileDrops>false</doTileDrops>
 </gamerules>
 <hunger>
     <depletion>off</depletion>
